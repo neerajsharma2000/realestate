@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Banglore Home Price Prediction</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--<script src="app.js"></script>
+	<link rel="stylesheet" href="app.css">-->
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+	body{font:normal 16px 'Roboto', sans-serif;;
+    box-sizing: border-box;
+    
+  
+    }
+    .bgimage{
+        background-image: url();
+    background-size: cover;
+    min-width: 100vh;
+    min-height: 100vh;
+    font-size: large;
+    font-weight: bold;
+    
+      }
+      .toggle{
+        width: 100%;
+    height: 10vh;
+    background-color: rosybrown;
+    text-align: right;
+    font-size: inherit;
+    color: white;
+    display: none;
+
+    }
+      .menu{
+		display: flex;
+    justify-content: space-between;
+    background-color: black;
+    opacity: 0.8;
+    width: 100%;
+    height: 17vh;
+    /* height: 14vh; */
+    margin: 16px 0px;
+      }
+      .leftmenu{
+        display: flex;
+    /* float: left; */
+    align-content: center;
+    justify-content: center;
+    width: 51vh;
+    height: 15vh;
+    padding: 2px 32px;
+    color: white;
+    text-align: center;
+      }
+      .rightmenu{
+       
+    height: 15vh;
+    width: 94vh;
+    display: flex;
+    justify-content: space-between;
+          
+      }
+      .leftmenu:hover{
+          color: lightcoral;
+      }
+      .rightmenu>ul li {
+          display: inline-block;
+      padding: 15px 20px;
+      font-size: larger;
+      border: 1px lightcoral solid;
+      border-radius: 29px;
+  }
+          
+      
+      .rightmenu>ul li a{
+          text-decoration:none;
+          color: white;
+      }
+      .rightmenu>ul li a:hover{
+          background-color: lightcoral;
+      }
+      .content{
+		background-color: lightcoral;
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 86vh;
+    /* margin: 3px -4px; */
+    padding: 43px 0px;
+    margin: 16px 0px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;}
+  
+    
+     form{
+		 display: flex;
+		 flex-direction: column;
+		 height: 104vh;
+	 } 
+   
+
+ 
+  </style>
+</head>
+
+<body>
+	<div class="bgimage">
+        <div class="toggle">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+        <div class="menu">
+            <div class="leftmenu">
+                <h1>NEERAJ SHARMA</h1></div>
+            <div class="rightmenu">
+                <ul>
+                    <li><a href="#content" >HOME</a></li>
+                    <li><a href="#contacts" >CONTACTS</a></li>
+                    <li><a href="#about" >ABOUT</a></li>
+                    <li><a href="#works" >WORKS</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content" id="content">
+            <h1>welcome to my website</h1>
+            
+             
+            <br>
+            <br>
+	<form class="form" action="{{url_for('result')}}" method="POST">
+
+			<h2>Area (Square Feet)</h2>
+    <input type="text" name="uiSqft" min="1" max="50000" step="5">
+	<h2>BHK</h2>
+	<br>
+	<input type="number" name="uiBHK" min="1" max="5" step="1">
+	
+	<h2>Bath</h2>
+	<br>
+	<input type="number" name="uiBath" min="1" max="5" step="1">
+	
+	
+	<h2>Balcony</h2>
+	<br>
+	<input type="number" name="uiBalcony" min="1" max="5" step="1">
+		<h2>Location</h2>
+	<div>
+  <select  name="uiLocations">
+    <option value="" disabled="disabled" selected="selected">Choose a Location</option>
+		{% for loc in list%}
+		<option >{{loc}}</option>
+		{% endfor %}
+  </select>
+  <br>
+</div>
+	<input type="submit" value="Estimate Price">
+	<center><h1>{{score}} lakhs </h1> </center>
+	</form>
+</div></div>
+</body>
+</html>
